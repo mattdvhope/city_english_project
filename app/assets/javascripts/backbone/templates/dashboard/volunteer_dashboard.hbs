@@ -21,7 +21,7 @@
     <h2 id="volunteer-welcome">Welcome to the "City English Project," {{volunteer.first_name}} as a Skype-partner!</h2>
     <hr>
 
-    <form novalidate="novalidate" class="simple_form application_form" id="new_user" enctype="multipart/form-data" action="/users" accept-charset="UTF-8" method="post">
+    <form novalidate="novalidate" class="simple_form application_form" enctype="multipart/form-data" action="/users" accept-charset="UTF-8" method="post">
       <input name="utf8" type="hidden" value="✓">
       <input type="hidden" name="authenticity_token" value={{token}}>
 

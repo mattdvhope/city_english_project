@@ -8,7 +8,7 @@
       <h4>If you do not yet have a PIN, please contact the "CEP volunteer administrator" from your organization or church.</h4>
     </div>
     <div class="modal-body">
-      <form class="volunteer-registration-form" id="new_user" enctype="multipart/form-data" action="/users" accept-charset="UTF-8" method="post">
+      <form class="volunteer-registration-form" enctype="multipart/form-data" action="/users" accept-charset="UTF-8" method="post">
       <input name="utf8" type="hidden" value="✓">
       <input type="hidden" name="authenticity_token" value={{token}}>
       <input type="hidden" name="role" value="volunteer">
@@ -69,7 +69,7 @@
         <hr>
 
         <div id="vol-submit-input-button" class="control-group">
-          <input type="submit" value="Become a Skype Partner!" id="submit" name="submit" class="btn btn-success volunteer-registration-submit">
+          <input type="submit" value="Become a Skype Partner!" name="submit" class="btn btn-success volunteer-registration-submit">
         </div>
 
       </form>
