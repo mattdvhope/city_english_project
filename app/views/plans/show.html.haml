@@ -1,9 +1,0 @@
-%section.bsc-container
-  %h1
-    ="Here is your plan!!  I would describe it this way... #{@plan.description}"
-  
-    %h2="It consists of this Curriculum: '#{@plan.curriculum.name}'"
-    %h2="Please choose one or more courses to add to your plan:"
-    -@plan.curriculum.courses.each do |course|
-      %h2=link_to course.name, curriculum_course_path(@plan.curriculum, course)
-      %h3=course.description

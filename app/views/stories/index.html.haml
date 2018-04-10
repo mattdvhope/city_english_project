@@ -1,5 +1,0 @@
-%section.bsc-container
-  %header
-    %h2 You can read this story in five formats:
-    -@stories.each do |story|
-      %h3=link_to story.lesson_language_version, part_lesson_story_path(@lesson.part, @lesson, story)
