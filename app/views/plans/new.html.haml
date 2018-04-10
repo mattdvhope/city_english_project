@@ -1,0 +1,16 @@
+%section.bsc-container
+  
+  = bootstrap_form_for @plan do |f|
+    %header
+      %h1 Build your first Plan!
+      %h3="Welcome to BSC English Online, #{current_user.name}!  Let's start building your custom-made 'personal study plan'! :-)"
+    %fieldset
+      .form-group
+        .row
+          .col-sm-4
+            %h2=f.collection_select :curriculum_id, Curriculum.all, :id, :name
+        .row
+          .col-sm-4
+            %h2= f.text_area :description, label: "Describe your plan"
+        %br
+        = f.submit "Let's build your first plan!", class: 'btn btn-success'

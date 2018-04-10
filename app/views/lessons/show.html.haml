@@ -1,0 +1,154 @@
+%section.bsc-container
+  
+  %h2="Welcome to the lesson called \"#{@lesson.name}\"!"
+  %br
+  %h2="#{@lesson.name} will consist of a story, a conversation and some practices."
+  %h2="Let's now read the story first in Thai..."
+  
+  %h2=link_to "Story Versions", part_lesson_stories_path(@lesson.part, @lesson)
+ 
+  %h2=link_to "Conversation Versions", part_lesson_conversations_path(@lesson.part, @lesson)
+  
+  %h2=link_to "Practice Types", part_lesson_practices_path(@lesson.part, @lesson)
+
+  %h2=link_to "Quiz for this lesson", curriculum_course_assessment_path(@lesson.part.course.curriculum, @lesson.part.course, @lesson.assessments.first)
+  
+%br
+%br
+
+/ Progress Status
+.panel.panel-default
+  .panel-body
+    %nav
+      %ul.pager
+        %li.previous.disabled
+          %a{:href => "#"}
+            %span{"aria-hidden" => "true"} 
+            Progress in #{@lesson.name} lesson
+        %li.next
+          %a{:href => "#"}
+            Next: Lesson 1
+            %span{"aria-hidden" => "true"} &rarr;
+    .progress
+      = render 'shared/progress_bars', :style_suffix => "-lesson" , :width => "43%", :completedness => "43% of #{@lesson.name} completed"
+
+%section.site_title
+  
+  %h2="Lesson 1: \"#{@lesson.name}\" - The Creator"
+  %br
+  .media
+  .media-top
+    %a{:href => "#"}
+      %img.media-object.thumbnail{:alt => "...", :src => "http://placehold.it/500x200"}
+  .media-body
+    %h3.media-heading Lesson Description
+    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+
+    / Story
+    .row
+    .col-lg-12.center
+      .col-md-12
+        %h2="Story Versions"
+        .panel-group#accordion
+          .panel.panel-default
+            .panel-heading
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse1"}
+                %h3="100% Thai"
+            #collapse1.panel-collapse.collapse
+              .panel-body
+                %h4.heading="Title"
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+            .panel-heading
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse2"}
+                %h3="English & 70% Thai"
+            #collapse2.panel-collapse.collapse
+              .panel-body
+                %h4.heading="Title"
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+            .panel-heading
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse3"}
+                %h3="English & 50% Thai"
+            #collapse3.panel-collapse.collapse
+              .panel-body
+                %h4.heading="Title"
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+            .panel-heading
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse4"}
+                %h3="English & 20% Thai"
+            #collapse4.panel-collapse.collapse
+              .panel-body
+                %h4.heading="Title"
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+            .panel-heading
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse5"}
+                %h3="100% English"
+            #collapse5.panel-collapse.collapse
+              .panel-body
+                %h4.heading="Title"
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+              / /.panel
+    / /.row
+
+    / Conversations
+    .row
+    .col-lg-12.center
+      .col-md-12
+        %h2="Conversations"
+        .panel-group#accordion2
+          .panel.panel-default
+            .panel-heading
+              %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapse1a"}
+                %h3="100% Thai"
+            #collapse1a.panel-collapse.collapse
+              .panel-body
+                %h4.heading="Title"
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+            .panel-heading
+              %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapse2a"}
+                %h3="English & 50% Thai"
+            #collapse2a.panel-collapse.collapse
+              .panel-body
+                %h4.heading="Title"
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+            .panel-heading
+              %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapse3a"}
+                %h3="100% English"
+            #collapse3a.panel-collapse.collapse
+              .panel-body
+                %h4.heading="Title"
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+            
+              / /.panel
+    / /.row
+
+    / Practices
+    .row
+    .col-lg-12.center
+      .col-md-12
+        %h2="Practices"
+        .panel-group#accordion2
+          .panel.panel-default
+            .panel-heading
+              %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapse1b"}
+                %h3="Vocabulary Practice"
+            #collapse1b.panel-collapse.collapse
+              .panel-body
+                %h4.heading="Title"
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+            .panel-heading
+              %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapse2b"}
+                %h3="Phrases Practice"
+            #collapse2b.panel-collapse.collapse
+              .panel-body
+                %h4.heading="Title"
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+            .panel-heading
+              %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapse3b"}
+                %h3="Sentences Practice"
+            #collapse3b.panel-collapse.collapse
+              .panel-body
+                %h4.heading="Title"
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+            
+              / /.panel
+    / /.row

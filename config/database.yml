@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: bsc_online_development
+  host: localhost
+
+test:
+  <<: *default
+  database: bsc_online_test
+
+production:
+  <<: *default
+  database: bsc_online_production
+  username: bsc_online
+  password: <%= ENV['BSC_ONLINE_DATABASE_PASSWORD'] %>

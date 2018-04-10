@@ -1,0 +1,18 @@
+<section class="bsc-container">
+  <header>
+    <h2>
+      <%= "\"#{@course.name}\" is under construction. " + @course.description %>
+    </h2>
+    <hr/>
+    <h2><%= "Here is a video preview of #{@course.name}..." %></h2>
+    <div id="videoDiv">
+      <iframe src="//fast.wistia.net/embed/iframe/sxogt01t32" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="640" height="359"></iframe>
+      <script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
+    </div>
+    <hr/>
+    <h2>
+      <%= "The only course available now is \"#{link_to 'Bible English', curriculum_course_path(@course.curriculum, 1)}\". You are welcome to study it".html_safe %>
+    </h2>
+    <br/>
+  </header>
+</section>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= full_title(yield :title)%></title> <!-- see 'helpers/application_helper.rb' -->
+    <%= Gon::Base.render_data %>
+
+    <%= csrf_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+
+    <%= favicon_link_tag "favicon.ico" %>
+
+
+    <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/278cd7f5-226e-4ad9-83fb-59e4a7eb4131.css"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Athiti|Chonburi|Kanit|Maitree|Prompt|Sriracha|Taviraj|Trirong|Josefin+Sans" rel="stylesheet">
+
+    <meta name="google-site-verification" content="Luq78CISO-21FTzhGzakIgYbiBTA55rH0ZKpVblw7Bg" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <%= action_cable_meta_tag %>
+
+  </head>
+
+  <body>
+
+    <%= render 'shared/messages' %>
+
+    <%= yield %>
+
+    <%= javascript_include_tag "application" %>
+
+  </body>
+</html>

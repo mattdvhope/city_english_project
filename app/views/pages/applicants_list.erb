@@ -1,0 +1,72 @@
+<% content_for :title, "Volunteer Administrator Applicants" %>
+
+<section id="admin-applicants-list" class="container">
+
+  <div>
+    
+    <h2><%= "Welcome to the \"Volunteer Administrator Applicants\" list page, #{current_user.first_name}!!" %></h2>
+    <hr>
+    <h3>Each applicant that you 'Approve' here will recieve a PIN in the automated email he or she receives.  This new "Volunteer Administrator" can in turn give that PIN to volunteers that he or she personally screens.</h3>
+
+    <% if AdminApplication.all == [] %>
+      <h3> No applications now. </h3>
+      <hr>
+    <% end %>
+    
+    <% i = 0 %>
+    <% @admin_applications.each do |application| %>
+      <hr>
+      <hr>
+      <% i = i + 1 %>
+      <h3><%= i.to_s + ". Applicant Name: " + "\"" + application.user.first_name + " " + application.user.last_name + "\"" %></h3>
+      <hr>
+      <h3><%= "Applicant's Email: " + "\"" + application.user.email + "\"" %></h3>
+      <hr>
+      <h3><%= "\"" + application.response_first + "\"" %></h3>
+      <hr>
+      <h3><%= "\"" + application.response_second + "\"" %></h3>
+      <hr>
+      <h3><%= "\"" + application.response_third + "\"" %></h3>
+      <hr>
+
+      <% if application.user.role == "admin" && application.approved %>
+        <div id="email-sent-already">
+          <%= link_to "This person has already been approved", "", :class => "btn btn-info mail-sent disabled", :style => "display: inline-block" %>
+        </div>
+      <% elsif application.user.role == "admin" && !application.approved %>
+        <div id="approved-but-no-email-sent">
+          <%= link_to "Change your mind", "", :class => "btn btn-success approved-button", :style => "display: inline-block" %>
+          <%= link_to "Change your mind", "", :class => "btn btn-danger disapproved-button", :style => "display: none" %>
+          <%= link_to "Approve", "/users/#{application.user.id}/approve_admin", :class => "btn btn-success approve-admin", remote: true, :data => { :id => "#{application.user.id}" }, :style => "display: none" %>
+          <%= link_to "Disapprove", "/users/#{application.user.id}/disapprove_admin", :class => "btn btn-danger disapprove-admin", remote: true, :data => { :id => "#{application.user.id}" }, :style => "display: none" %>
+          <%= link_to "Send approval email -- can't change!!", "/admin_applications/#{application.id}/email_admin_application_approval", :class => "btn btn-info mail-to-admin", remote: true, :data => { :id => "#{application.id}" }, :style => "display: inline-block" %>
+          <%= link_to "This person has already been approved", "", :class => "btn btn-info mail-sent disabled", :style => "display: none" %>
+          <div style="display: none"><h3><%="PIN \"#{application.user.pin}\" emailed to \"#{application.user.first_name} #{application.user.last_name}\"" %></h3></div>
+      <% elsif application.user.role == "disapproved_admin" %>
+        <div id="disapproved-no-email-sent">
+          <%= link_to "Change your mind", "", :class => "btn btn-success approved-button", :style => "display: none" %>
+          <%= link_to "Change your mind", "", :class => "btn btn-danger disapproved-button", :style => "display: inline-block" %>
+          <%= link_to "Approve", "/users/#{application.user.id}/approve_admin", :class => "btn btn-success approve-admin", remote: true, :data => { :id => "#{application.user.id}" }, :style => "display: none" %>
+          <%= link_to "Disapprove", "/users/#{application.user.id}/disapprove_admin", :class => "btn btn-danger disapprove-admin", remote: true, :data => { :id => "#{application.user.id}" }, :style => "display: none" %>
+          <%= link_to "Send approval email -- can't change!!", "/admin_applications/#{application.id}/email_admin_application_approval", :class => "btn btn-info mail-to-admin", remote: true, :data => { :id => "#{application.id}" }, :style => "display: none" %>
+          <%= link_to "This person has already been approved", "", :class => "btn btn-info mail-sent disabled", :style => "display: none" %>
+          <div style="display: none"><h3><%="PIN \"#{application.user.pin}\" emailed to \"#{application.user.first_name} #{application.user.last_name}\"" %></h3></div>
+        </div>
+      <% else %>
+        <div id="not-approved-or-disapproved-yet">
+          <%= link_to "Change your mind", "", :class => "btn btn-success approved-button", :style => "display: none" %>
+          <%= link_to "Change your mind", "", :class => "btn btn-danger disapproved-button", :style => "display: none" %>
+          <%= link_to "Approve", "/users/#{application.user.id}/approve_admin", :class => "btn btn-success approve-admin", remote: true, :data => { :id => "#{application.user.id}" }, :style => "display: inline-block" %>
+          <%= link_to "Disapprove", "/users/#{application.user.id}/disapprove_admin", :class => "btn btn-danger disapprove-admin", remote: true, :data => { :id => "#{application.user.id}" }, :style => "display: inline-block" %>
+          <%= link_to "Send approval email -- can't change!!", "/admin_applications/#{application.id}/email_admin_application_approval", :class => "btn btn-info mail-to-admin", remote: true, :data => { :id => "#{application.id}" }, :style => "display: none" %>
+          <%= link_to "This person has already been approved", "", :class => "btn btn-info mail-sent disabled", :style => "display: none" %>
+          <div style="display: none"><h3><%="PIN \"#{application.user.pin}\" emailed to \"#{application.user.first_name} #{application.user.last_name}\"" %></h3></div>
+        </div>
+      <% end %>
+
+    <% end %>
+
+  </div>
+
+</section>
+
