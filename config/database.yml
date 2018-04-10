@@ -5,15 +5,15 @@ default: &default
 
 development:
   <<: *default
-  database: bsc_online_development
+  database: cityenglishproject_development
   host: localhost
 
 test:
   <<: *default
-  database: bsc_online_test
+  database: cityenglishproject_test
 
 production:
   <<: *default
-  database: bsc_online_production
-  username: bsc_online
-  password: <%= ENV['BSC_ONLINE_DATABASE_PASSWORD'] %>
+  database: cityenglishproject_production
+  username: cityenglishproject
+  password: <%= ENV['CEP_ONLINE_DATABASE_PASSWORD'] %>
